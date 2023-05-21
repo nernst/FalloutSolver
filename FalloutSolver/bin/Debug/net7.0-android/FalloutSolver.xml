@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FalloutSolver</name>
+    </assembly>
+    <members>
+        <member name="P:FalloutSolver.ViewModels.EntryViewModel.Entry">
+            <inheritdoc cref="F:FalloutSolver.ViewModels.EntryViewModel.entry"/>
+        </member>
+        <member name="P:FalloutSolver.ViewModels.EntryViewModel.Count">
+            <inheritdoc cref="F:FalloutSolver.ViewModels.EntryViewModel.count"/>
+        </member>
+        <member name="P:FalloutSolver.ViewModels.EntryViewModel.IsCandidate">
+            <inheritdoc cref="F:FalloutSolver.ViewModels.EntryViewModel.isCandidate"/>
+        </member>
+        <member name="P:FalloutSolver.ViewModels.EntryViewModel.HasError">
+            <inheritdoc cref="F:FalloutSolver.ViewModels.EntryViewModel.hasError"/>
+        </member>
+        <member name="P:FalloutSolver.ViewModels.SolverViewModel.CharacterCount">
+            <inheritdoc cref="F:FalloutSolver.ViewModels.SolverViewModel._CharacterCount"/>
+        </member>
+    </members>
+</doc>

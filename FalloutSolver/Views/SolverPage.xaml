@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:FalloutSolver.ViewModels"
+             xmlns:conv="clr-namespace:FalloutSolver.Converters"
+             x:Class="FalloutSolver.Views.SolverPage"
+             Title="Fallout Solver"
+             x:DataType="viewModels:SolverViewModel"
+             BindingContext="{Binding Source={RelativeSource Self}, Path=ViewModel}"
+             >
+    
+    <ContentPage.Resources>
+        <conv:IsCandidateToColorConverter x:Key="candidateConv" />
+    </ContentPage.Resources>
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add Entry" IconImageSource="{FontImage Glyph='+', Size=22}" Command="{Binding AddEntryCommand}" />
+        <ToolbarItem Text="Solve" IconImageSource="{FontImage Glyph='\x2714', Size=22}" Command="{Binding SolveCommand}" IsEnabled="{Binding CanSolve}" />
+    </ContentPage.ToolbarItems>
+
+    <CollectionView
+        ItemsSource="{Binding Entries}">
+        <CollectionView.GestureRecognizers>
+            <SwipeGestureRecognizer Direction="Left,Right" Command="{Binding DeleteEntryCommand}" CommandParameter="{Binding Source={RelativeSource AncestorType={x:Type CollectionView}},Path=SelectedItem}" />
+        </CollectionView.GestureRecognizers>
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="{x:Type viewModels:EntryViewModel}">
+                <HorizontalStackLayout>
+                    <Picker SelectedItem="{Binding Count}" ItemsSource="{Binding Source={RelativeSource AncestorType={x:Type viewModels:SolverViewModel}}, Path=Counts}" />
+                    <Editor Text="{Binding Entry}" MinimumWidthRequest="300" TextColor="{Binding Path=IsCandidate, Converter={StaticResource candidateConv}}}" />
+                </HorizontalStackLayout>
+                
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+        
+    </CollectionView>
+
+</ContentPage>
